@@ -222,7 +222,7 @@ export default function MusicRoom() {
                   <Slider
                     value={[volume]}
                     onValueChange={(val) => changeVolume(val[0])}
-                    className="bg-pink-500 h-2 rounded-full transition-all duration-200"
+                    className="h-2 rounded-full transition-all duration-200"
                   />
                 </div>
               </div>
