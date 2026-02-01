@@ -1,0 +1,34 @@
+-- CreateTable
+CREATE TABLE "Queue" (
+    "id" SERIAL NOT NULL,
+    "videoId" TEXT NOT NULL,
+    "djId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Queue_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Dj" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Dj_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Chat" (
+    "id" SERIAL NOT NULL,
+    "message" TEXT NOT NULL,
+    "djId" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Chat_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "Queue" ADD CONSTRAINT "Queue_djId_fkey" FOREIGN KEY ("djId") REFERENCES "Dj"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Chat" ADD CONSTRAINT "Chat_djId_fkey" FOREIGN KEY ("djId") REFERENCES "Dj"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
